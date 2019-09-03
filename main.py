@@ -23,8 +23,10 @@ class Window(tk.Tk):
 
         self.mainloop()
 
-    def get_color_palette(self):
-        return self._color_palette
+    def get_color(self, color=None):
+        if color is not None:
+            return self._color_palette[color]
+        return self._color_palette  # returns color palette dict
 
 
 if __name__ == "__main__":
