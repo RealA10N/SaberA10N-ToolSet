@@ -4,8 +4,8 @@ from os import getcwd, path
 
 class Window(tk.Tk):
 
-    assets_path = path.join(getcwd(), "Assets")
-    color_palette = {"bg": "#454545"}
+    _assets_path = path.join(getcwd(), "Assets")
+    _color_palette = {"bg": "#454545", "text": "#f0f0f0"}
 
     def __init__(self):
         tk.Tk.__init__(self)
@@ -15,13 +15,16 @@ class Window(tk.Tk):
         self.title(title)
 
         # window icon
-        icon_path = path.join(self.assets_path, "icon.ico")
+        icon_path = path.join(self._assets_path, "icon.ico")
         self.iconbitmap(icon_path)
 
         # window color
-        self.config(background=self.color_palette["bg"])
+        self.config(background=self._color_palette["bg"])
 
         self.mainloop()
+
+    def get_color_palette(self):
+        return self._color_palette
 
 
 if __name__ == "__main__":
