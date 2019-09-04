@@ -5,7 +5,11 @@ from os import getcwd, path
 class Window(tk.Tk):
 
     _assets_path = path.join(getcwd(), "Assets")
-    _color_palette = {"bg": "#454545", "text": "#f0f0f0"}
+    _pad = 5
+
+    _dark_color_palette = {"background": "#454545", "foreground": "#f0f0f0"}
+    _normal_color_palette = {"background": "#f0f0f0", "foreground": "black"}
+    _color_palette = _normal_color_palette
 
     def __init__(self):
         tk.Tk.__init__(self)
@@ -19,7 +23,7 @@ class Window(tk.Tk):
         self.iconbitmap(icon_path)
 
         # window color
-        self.config(background=self._color_palette["bg"])
+        self.config(background=self._color_palette["background"])
 
         self.mainloop()
 
