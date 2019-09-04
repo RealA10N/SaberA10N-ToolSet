@@ -63,3 +63,33 @@ class Thumbnail:
         base_image = image.resize(self.size)
 
         return Image.alpha_composite(base_image, overlay_img)
+
+
+def select_file_gui(**kwargs):
+
+    root = tk.Tk()   # create empty window
+    root.withdraw()  # hide the window
+    return filedialog.askopenfilename(**kwargs)
+
+
+if __name__ == "__main__":
+
+    # importring gui moudles
+    import tkinter as tk
+    from tkinter import filedialog
+
+    # load background image
+    bg_path = select_file_gui(title="Select Background Image")
+    bg_image = Image.open(bg_path)
+
+    # add overlay
+    overlay_text = input("Please type the text you want to add to the image below:\n")
+    overlay = Thumbnail(overlay_text)
+    final_image = overlay.paste_on_image(bg_image)
+
+    # save new image
+    new_image_name = "{}.png".format(overlay_text)
+    saving_folder = path.dirname(bg_path)
+    saving_path = path.join(saving_folder, new_image_name)
+    final_image.save(saving_path)
+    print("The new image was saved under: {}".format(saving_path))
