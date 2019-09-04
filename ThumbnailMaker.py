@@ -85,7 +85,8 @@ if __name__ == "__main__":
     # add overlay
     overlay_text = input("Please type the text you want to add to the image below:\n")
     overlay = Thumbnail(overlay_text)
-    final_image = overlay.paste_on_image(bg_image)
+    option = input("Please type the overlay option of your choise below (0/1):\n")
+    final_image = overlay.paste_on_image(bg_image, option=int(option))
 
     # save new image
     new_image_name = "{}.png".format(overlay_text)
